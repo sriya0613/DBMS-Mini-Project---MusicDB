@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+    <h3 class="mb-3 text-white">Add New Track</h3>
+    <form method="POST" class="mt-3">
+        <div class="mb-3">
+            <label class="form-label text-white">Track Name</label>
+            <input type="text" name="name" class="form-control bg-dark text-white" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white">Lyrics</label>
+            <textarea name="lyrics" class="form-control bg-dark text-white"></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label text-white">Album</label>
+                <select name="album" class="form-select bg-dark text-white" required>
+                    <option value="">-- Select Album --</option>
+                    {% for a in albums %}
+                    <option value="{{ a.Album_id }}">{{ a.Album_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label class="form-label text-white">Genre</label>
+                <select name="genre" class="form-select bg-dark text-white" required>
+                    <option value="">-- Select Genre --</option>
+                    {% for g in genres %}
+                    <option value="{{ g.Genre_id }}">{{ g.Genre_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label class="form-label text-white">Singer</label>
+                <select name="singer" class="form-select bg-dark text-white" required>
+                    <option value="">-- Select Singer --</option>
+                    {% for s in singers %}
+                    <option value="{{ s.Singer_id }}">{{ s.Singer_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Track</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

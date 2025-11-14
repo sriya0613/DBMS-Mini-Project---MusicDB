@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+    <h3 class="text-white">Singer Audit Log</h3>
+    <table class="table table-hover table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Audit ID</th>
+                <th>Singer ID</th>
+                <th>Old First</th>
+                <th>New First</th>
+                <th>Old Last</th>
+                <th>New Last</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.Audit_id }}</td>
+                <td>{{ log.Singer_id }}</td>
+                <td>{{ log.Old_First_name }}</td>
+                <td>{{ log.New_First_name }}</td>
+                <td>{{ log.Old_Last_name }}</td>
+                <td>{{ log.New_Last_name }}</td>
+                <td>{{ log.Change_timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

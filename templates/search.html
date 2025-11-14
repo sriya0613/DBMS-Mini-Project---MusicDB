@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+    <h3 class="text-white">Search Tracks by Singer</h3>
+<form method="POST" action="/search">
+    <div class="mb-3">
+        <input type="text" name="singer_name" class="form-control" placeholder="Enter singer name"
+            value="{{ search_name }}">
+    </div>
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+
+
+    {% if results %}
+    <table class="table table-hover table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Track Name</th>
+                <th>Album</th>
+                <th>Genre</th>
+                <th>Singer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row.Track_name }}</td>
+                <td>{{ row.Album_name }}</td>
+                <td>{{ row.Genre_name }}</td>
+                <td>{{ row.Singer_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% elif request.method == 'POST' %}
+    <p class="text-white mt-3">No tracks found for this singer.</p>
+    {% endif %}
+</div>
+{% endblock %}

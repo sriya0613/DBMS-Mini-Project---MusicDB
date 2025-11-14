@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+    <h3 class="text-white">All Tracks</h3>
+    <table class="table table-hover table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Track ID</th>
+                <th>Track Name</th>
+                <th>Album</th>
+                <th>Genre</th>
+                <th>Singer</th>
+                <th>Singer ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tracks %}
+            <tr>
+                <td>{{ t.Track_id }}</td>
+                <td>{{ t.Track_name }}</td>
+                <td>{{ t.Album_name }}</td>
+                <td>{{ t.Genre_name }}</td>
+                <td>{{ t.Singer_name }}</td>
+                <td>{{ t.Singer_id }}</td>
+                <td>
+                    <a href="/edit_singer/{{ t.Singer_id }}" class="btn btn-sm btn-outline-light">Edit</a>
+                    <form action="/delete_singer/{{ t.Singer_id }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this singer?');">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

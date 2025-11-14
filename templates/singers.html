@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card">
+    <h3 class="text-white mb-3">🎤 All Singers</h3>
+
+    {% if singers %}
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Singer ID</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in singers %}
+            <tr>
+                <td>{{ s.Singer_id }}</td>
+                <td>{{ s.First_name }}</td>
+                <td>{{ s.Middle_name if s.Middle_name else '-' }}</td>
+                <td>{{ s.Last_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-muted">No singers found.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
